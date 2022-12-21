@@ -1,9 +1,15 @@
 import { Content } from './content';
+import { Notification } from './Notification';
 
-describe('Notification Content', () => {
-  it('should be able to create a notification content', () => {
-    const content = new Content('Hello world');
-    expect(content.value).toBeTruthy();
+describe('Notification', () => {
+  it('should be able to create a new notification', () => {
+    const notification = new Notification({
+      content: new Content('Hello world'),
+      category: 'email',
+      recipientId: 'some-id',
+    });
+
+    expect(notification).toBeInstanceOf(Notification);
   });
 
   it('should be not be able to create a notification content w less than five characters', () => {
