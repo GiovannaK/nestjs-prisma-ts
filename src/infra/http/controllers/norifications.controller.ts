@@ -1,6 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { SendNotification } from 'src/application/usecases/send-notification';
 import { CreateNotificationBody } from '../dtos/create-notification.body';
+import { NotificationViewModel } from '../viewModels/notification-viewModel';
 
 @Controller('notifications')
 export class NotificationsController {
@@ -14,6 +15,8 @@ export class NotificationsController {
       content,
     });
 
-    return notification;
+    return {
+      notification: NotificationViewModel.toHttp(notification),
+    };
   }
 }
